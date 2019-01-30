@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viemodels="clr-namespace:MicroFeed.com.arybalko.viemodels;assembly=MicroFeed"
+             xmlns:abstractions="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
+             x:Class="MicroFeed.com.arybalko.views.FeedView"
+             Title="Feed">
+	<ContentPage.BindingContext>
+		<viemodels:FeedViewModel />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<ListView ItemsSource="{Binding Feed}" HasUnevenRows="True" BackgroundColor="Transparent"
+		          SeparatorVisibility="Default" SeparatorColor="DarkGray" IsPullToRefreshEnabled="True"
+		          RefreshCommand="{Binding RefreshFeedCommand}" IsRefreshing="{Binding IsRefreshing}"
+		          ItemSelected="ListView_OnItemSelected">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Padding="5,15">
+							<Label Text="{Binding Title}" FontAttributes="Bold" TextColor="DimGray"/>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>
